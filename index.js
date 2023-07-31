@@ -16,18 +16,20 @@ import puppeteer from "puppeteer";
   await page.waitForSelector('#customer_login');
 
   // Fill in the form inputs
-  await page.type('#customer\\[email\\]', 'demo_username');
+  await page.type('#customer\\[email\\]', 'demo@username.com');
   await page.type('#customer\\[password\\]', 'demo_password');
 
   // Submit the form by clicking the login button
   await Promise.all([
-    page.waitForNavigation(), // Wait for navigation to complete
-    page.click('.form__submit'),
+    // Wait for navigation to complete
+    page.waitForNavigation(), 
+    // to avoid multiple button with same class, I copied all the class of the login button, to make sure I am selecting the right button
+    page.click('.form__submit.button.button--primary.button--full'),
   ]);
 
   // Verify successful login by checking the URL or page content
   const loggedInUrl = await page.url();
-  if (loggedInUrl.includes('dashboard')) {
+  if (loggedInUrl.includes('challenge')) {
     console.log('Login successful!');
   } else {
     console.log('Login failed!');
