@@ -1,4 +1,4 @@
-// index.js
+// signup.js
 import puppeteer from "puppeteer";
 
 	(async () => {
