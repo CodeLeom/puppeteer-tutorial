@@ -21,7 +21,7 @@ import puppeteer from "puppeteer";
   await Promise.all([
     // Wait for navigation to complete
     page.waitForNavigation(), 
-    // to avoid multiple button with same class, I copied all the class of the login button, to make sure I am selecting the right button
+    // select the button with a distinct class
     page.click('.form__submit.button--full'),
   ]);
 
