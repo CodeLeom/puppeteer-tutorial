@@ -1,10 +1,8 @@
 import puppeteer from "puppeteer";
 
-	(async () => {
+
   // Launch a headless browser
-	  const browser = await puppeteer.launch({ 
-	  headless: false 
-  });
+	  const browser = await puppeteer.launch({ headless: false });
 
   // Create a new page
   const page = await browser.newPage();
@@ -16,15 +14,15 @@ import puppeteer from "puppeteer";
   await page.waitForSelector('#customer_login');
 
   // Fill in the form inputs
-  await page.type('#customer\\[email\\]', 'demo@username.com');
-  await page.type('#customer\\[password\\]', 'demo_password');
+  await page.type('input[id*="customer"]', 'demo@username.com');
+  await page.type('input[type=password]', 'demo_password');
 
   // Submit the form by clicking the login button
   await Promise.all([
     // Wait for navigation to complete
     page.waitForNavigation(), 
     // to avoid multiple button with same class, I copied all the class of the login button, to make sure I am selecting the right button
-    page.click('.form__submit.button.button--primary.button--full'),
+    page.click('.form__submit.button--full'),
   ]);
 
   // Verify successful login by checking the URL or page content
@@ -37,4 +35,3 @@ import puppeteer from "puppeteer";
 
   // Close the browser
   await browser.close();
-})();
