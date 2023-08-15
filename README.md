@@ -18,3 +18,6 @@ Once you are done, run `node index.js` or `node signup.js`.
 # Puppeteer Tutorial for taking screenshot & Generating PDF
 
 Added to this code is also a code for you to take screenshot of website or or generate pdf from the website.
+
+# Multiple page screenshots
+Create a sepreate folder called images, all the screenshots will be saved into the folder when you run the `batch.js` file.
